@@ -1,0 +1,11 @@
+header {
+    background-image: url("/Header.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  }
+
+header h1, header h5 {color:white}

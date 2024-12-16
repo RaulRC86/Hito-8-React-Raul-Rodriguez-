@@ -1,0 +1,6 @@
+.NotFound {
+display: flex;
+justify-content: center;
+}
+
+.NotFound img{height: auto; width: 100vw;}

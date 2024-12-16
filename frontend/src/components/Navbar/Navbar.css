@@ -1,0 +1,21 @@
+nav {
+    background-color: rgb(41, 41, 41);
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+  }
+  nav button {
+    background-color: rgb(41, 41, 41);
+    color: white;
+    margin-inline: 2px;
+  }
+  nav h4{margin-inline-end: 20px;}
+  .totalCompra{margin-left: auto;}
+
+ 
+.boton2{color: white; background-color: black;}
+.boton1, .boton2{text-decoration: none; border: solid black 2px; padding: 5px; padding-inline: 10px;}
+
+.inactive {text-decoration: none; color: gray;}
+.active{text-decoration: none; border-bottom: solid 3px orange;}
