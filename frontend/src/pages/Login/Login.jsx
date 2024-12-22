@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
-  const [contraseña, setContraseña] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [exito, setExito] = useState("");
 
@@ -21,7 +21,7 @@ export const Login = () => {
       },
       body: JSON.stringify({
         email, 
-        contraseña,
+        password,
       }),
     });
 
@@ -30,11 +30,11 @@ export const Login = () => {
 
 
 
-    if (!email || !contraseña) {
+    if (!email || !password) {
       setError("Ambos campos son obligatorios");
       return;
     }
-    if (contraseña.length < 6) {
+    if (password.length < 6) {
       setError("La contraseña es demasiado corta");
       return;
     }
@@ -60,9 +60,9 @@ export const Login = () => {
           <input
             type="password"
             placeholder='Password'
-            value={contraseña}
+            value={password}
             onChange={(e) => {
-              setContraseña(e.target.value);
+              setPassword(e.target.value);
             }}
           />
         </div>
