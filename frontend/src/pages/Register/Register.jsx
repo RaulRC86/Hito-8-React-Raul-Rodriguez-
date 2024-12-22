@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
-  const [contraseña, setContraseña] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
   const [error, setError] = useState("");
   const [exito, setExito] = useState("");
@@ -13,15 +13,15 @@ export const Register = () => {
     setError("");
     setExito("");
 
-    if (!email.trim() || !contraseña.trim() || !confirmar.trim()) {
+    if (!email.trim() || !password.trim() || !confirmar.trim()) {
       setError("Todos los campos son obligatorios.");
       return;
     }
-    if (contraseña.length < 6) {
+    if (password.length < 6) {
       setError("La contraseña debe tener más de 6 caracteres.");
       return;
     }
-    if (contraseña !== confirmar) {
+    if (password !== confirmar) {
       setError("Las contraseñas no coinciden.");
       return;
     }
@@ -49,8 +49,8 @@ export const Register = () => {
           <label>Contraseña</label>
           <input
             type="password"
-            value={contraseña}
-            onChange={(e) => setContraseña(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
        
        
