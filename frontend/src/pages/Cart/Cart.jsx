@@ -1,10 +1,35 @@
-import { useContext } from "react";
-import {cartContext, useUser} from '../../contexts'
-import "./Cart.css"
+import { useContext, useState } from "react";
+import { cartContext, useUser } from "../../contexts";
+import "./Cart.css";
 
 export const Cart = () => {
-  const {cart, handleIncrease, handleDecrease, total}= useContext(cartContext)
-  const {token} = useUser()
+  const { cart, handleIncrease, handleDecrease, total } = useContext(cartContext);
+  const { token } = useUser();
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          cart, 
+          total, 
+        }),
+      });
+
+      if (response.ok) {
+        setSuccessMessage("¡Compra realizada con éxito!");
+      } else {
+        throw new Error("Error en la compra");
+      }
+    } catch (error) {
+      console.error("Error durante el checkout:", error);
+      setSuccessMessage("Hubo un error al realizar la compra. Intenta nuevamente.");
+    }
+  };
 
   return (
     <div className="container mt-5">
@@ -47,9 +72,16 @@ export const Cart = () => {
         </ul>
       )}
       <h3>Total: ${total.toFixed(0)}</h3>
-      <button className="btn btn-primary mt-3"
-      disabled={!token}>Pagar</button>
+      <button
+        className="btn btn-primary mt-3"
+        disabled={!token}
+        onClick={handleCheckout}
+      >
+        Pagar
+      </button>
+      {successMessage && <p>{successMessage}</p>}
     </div>
   );
 };
+
 

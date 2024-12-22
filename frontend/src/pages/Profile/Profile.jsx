@@ -24,7 +24,6 @@ const handleLogout = () => {
     <div className="perfil">
       {userData ? (
         <>
-        <p>Nombre: {userData.email}</p>
         <p>Correo: {userData.email}</p>
         
       

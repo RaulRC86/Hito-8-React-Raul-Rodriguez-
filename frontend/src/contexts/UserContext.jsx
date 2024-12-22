@@ -12,7 +12,7 @@ const logout =() => {
     localStorage.removeItem("token")
     localStorage.removeItem("email")
     setToken(null)
-    setEmail("")
+    setEmail(null)
 };
 const login = async (email, password) => {
     try {
@@ -79,8 +79,12 @@ const login = async (email, password) => {
 useEffect(() => {
     if (token){
         localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
+    } else {
+        localStorage.removeItem("token");
+        localStorage.removeItem("email");
     }
-}, [token])
+}, [token, email])
 
 return(
     <UserContext.Provider value={{token, setToken, email, login, register, logout, getProfile}}>
