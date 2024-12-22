@@ -35,32 +35,32 @@ export const Register = () => {
 
   return (
     <>
-    <div className="formularioC">
-      <form className="formulario" onSubmit={validarDatos}>
-        <div className="formGroup">
+    <div className="formulario">
+      <form className="form" onSubmit={validarDatos}>
+
           <label>Email</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div className="formGroup">
+ 
+ 
           <label>Contraseña</label>
           <input
             type="password"
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
           />
-        </div>
-        <div className="formGroup">
+       
+       
           <label>Confirmar Contraseña</label>
           <input
             type="password"
             value={confirmar}
             onChange={(e) => setConfirmar(e.target.value)}
           />
-        </div>
+
 
         {/* Mostrar error si existe */}
         {error && <p className="error">{error}</p>}

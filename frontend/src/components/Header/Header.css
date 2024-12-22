@@ -8,4 +8,13 @@ header {
     height: 30vh;
   }
 
-header h1, header h5 {color:white}
+
+
+.stroke-text {
+  color: white; 
+  -webkit-text-stroke: 1px black; 
+  text-stroke: 1px black; 
+  max-width: 50vw;
+  text-align: center;
+  font-family: Arial, sans-serif; 
+}

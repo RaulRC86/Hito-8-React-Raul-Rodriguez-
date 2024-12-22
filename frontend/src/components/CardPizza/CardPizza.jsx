@@ -1,11 +1,12 @@
+import './cardPizza.css'
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { cartContext } from "../../contexts/cartContext";
 import { Link } from "react-router-dom";
 
 
 export const CardPizza = ({ name, desc, img, ingredients, price, id }) => {
-       const {handleAgrega} = useContext(CartContext)
+       const {handleAgrega} = useContext(cartContext)
 
 
 
@@ -21,8 +22,8 @@ export const CardPizza = ({ name, desc, img, ingredients, price, id }) => {
         ))}
       </ul>
       <p className="mt-1 fw-bold">Precio: ${price}</p>
-      <Link to={`/pizza/${id}`} className="btn btn-light">Ver más 👀</Link>
-      <button className="btn btn-dark" onClick={() => handleAgrega(id)}>Añadir 🛒</button>
+      <Link to={`/pizza/${id}`} className="btn btn-light m-2">Ver más 👀</Link>
+      <button className="btn btn-dark pagar" onClick={() => handleAgrega(id)}>Añadir 🛒</button>
       </div>
     </div>
   );

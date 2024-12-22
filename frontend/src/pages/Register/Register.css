@@ -1,14 +1,17 @@
-.formularioC {
+.formulario {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin: 20px;
+
+
+
+  margin: 0;
 }
-form {
-  display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  gap: 10px; 
+
+.form{
+  border: solid black 2px;
+  padding: 20px;
+  
 }

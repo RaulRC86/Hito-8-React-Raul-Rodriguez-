@@ -1,7 +1,7 @@
 import {createContext, useState} from "react";
 import { pizzaCart } from "../assets/JS/pizzas";
 
-export const CartContext = createContext()
+export const cartContext = createContext()
 
 export const CartProvider = ({children})=>{
     const [cart, setCart]= useState(pizzaCart)
@@ -54,5 +54,5 @@ const total = cart.reduce((acc, pizza) => {
         total,
       };
 
-      return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
+      return <cartContext.Provider value={contextValue}>{children}</cartContext.Provider>;
 }

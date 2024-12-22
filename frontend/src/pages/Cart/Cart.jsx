@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import {CartContext, useUser} from '../../contexts'
+import {cartContext, useUser} from '../../contexts'
 import "./Cart.css"
 
 export const Cart = () => {
-  const {cart, handleIncrease, handleDecrease, total}= useContext(CartContext)
+  const {cart, handleIncrease, handleDecrease, total}= useContext(cartContext)
   const {token} = useUser()
 
   return (

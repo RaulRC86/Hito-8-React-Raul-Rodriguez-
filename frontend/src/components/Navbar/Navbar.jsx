@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { useUser, CartContext } from "../../contexts";
+import { useUser, cartContext } from "../../contexts";
 import "./Navbar.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { setActiveClass } from "../../utilities/setActive";
 
 export const Navbar = () => {
-  const { total } = useContext(CartContext);
+  const { total } = useContext(cartContext);
   const { token, logout } = useUser();
   const navigate = useNavigate();
 
@@ -16,7 +16,6 @@ export const Navbar = () => {
 
   return (
     <nav>
-      <h4>Pizzería Mamma Mía!</h4>
       <NavLink to="/">
         <button className={setActiveClass}>🍕Home</button>
       </NavLink>
