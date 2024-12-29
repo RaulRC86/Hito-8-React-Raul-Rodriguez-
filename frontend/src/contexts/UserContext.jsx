@@ -1,8 +1,10 @@
 import   { createContext, useContext, useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const UserContext= createContext()
 
 export const UserProvider = ({children}) => {
+  const navigate= useNavigate()
 
 const storedToken= localStorage.getItem("token")
 const [token, setToken] = useState(storedToken || null)
@@ -13,6 +15,7 @@ const logout =() => {
     localStorage.removeItem("email")
     setToken(null)
     setEmail(null)
+    navigate('/')
 };
 const login = async (email, password) => {
     try {

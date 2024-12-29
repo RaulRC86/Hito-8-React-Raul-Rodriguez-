@@ -24,7 +24,11 @@ export const Navbar = () => {
           <NavLink to="/profile">
             <button className={setActiveClass}>🔓Profile</button>
           </NavLink>
-          <NavLink onClick={handleLogout} className="boton1">🔒Logout</NavLink>
+          <div className="logout-button">
+            <button onClick={handleLogout} className="boton1">
+              🔒Logout
+            </button>
+          </div>
         </>
       ) : (
         <>
