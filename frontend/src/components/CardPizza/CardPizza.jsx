@@ -8,12 +8,13 @@ import { Link, useLocation } from "react-router-dom";
 export const CardPizza = ({ name, desc, img, ingredients, price, id }) => {
        const {handleAgrega} = useContext(cartContext)
        const location = useLocation()
-       const isPizzaPage = /^\/pizza\/\d+/.test(location.pathname);
+       const isPizzaPage = /^\/pizza\/[a-zA-Z0-9]+/.test(location.pathname);
+
 
 
 
   return (
-    <div className="card m-3" style={{width:"18rem"}}>
+    <div className="card m-3 pizzaDesc" style={{width:"18rem"}}>
       <img src={img} className="card-img-top" alt={name} />
       <div className="card-body">
       <h5 className="card-title">{name}</h5>

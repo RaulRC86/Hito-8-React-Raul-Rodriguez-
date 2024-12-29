@@ -7,6 +7,7 @@ import './pizza.css'
 
 export const Pizza = () => {
   const {id}= useParams();
+  console.log(id)
   const [pizzas, setPizzas] = useState([])
 
   const backEnd= "http://localhost:5000/api/pizzas/"
