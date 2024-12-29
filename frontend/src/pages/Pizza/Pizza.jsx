@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import {CardPizza} from "../../components/CardPizza/CardPizza"
+import './pizza.css'
 
 
 
