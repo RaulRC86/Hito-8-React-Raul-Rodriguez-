@@ -1,33 +1,50 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { cartContext, useUser } from "../../contexts";
 import "./Cart.css";
+import Swal from "sweetalert2";
 
 export const Cart = () => {
   const { cart, handleIncrease, handleDecrease, total } = useContext(cartContext);
   const { token } = useUser();
-  const [successMessage, setSuccessMessage] = useState("");
 
   const handleCheckout = async () => {
+    if (!token) {
+      Swal.fire({
+        icon: "error",
+        title: "Acceso denegado",
+        text: "Debes iniciar sesión para realizar una compra.",
+      });
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5000/api/checkouts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, 
         },
         body: JSON.stringify({
-          cart, 
-          total, 
+          cart,
+          total,
         }),
       });
 
       if (response.ok) {
-        setSuccessMessage("¡Compra realizada con éxito!");
+        Swal.fire({
+          icon: "success",
+          title: "¡Compra exitosa!",
+          text: "Tu compra ha sido realizada correctamente.",
+        });
       } else {
         throw new Error("Error en la compra");
       }
     } catch (error) {
-      console.error("Error durante el checkout:", error);
-      setSuccessMessage("Hubo un error al realizar la compra. Intenta nuevamente.");
+      Swal.fire({
+        icon: "error",
+        title: "Error en la compra",
+        text: "Hubo un problema al procesar tu compra. Intenta nuevamente.",
+      });
     }
   };
 
@@ -79,9 +96,6 @@ export const Cart = () => {
       >
         Pagar
       </button>
-      {successMessage && <p>{successMessage}</p>}
     </div>
   );
 };
-
-
