@@ -2,13 +2,12 @@ import './login.css';
 import { useState, useEffect } from "react";
 import { useUser } from '../../contexts/userContext';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export const Login = () => {
   const { login, token } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [exito, setExito] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,23 +18,41 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-    setExito("");
 
     if (!email || !password) {
-      setError("Ambos campos son obligatorios");
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos obligatorios',
+        text: 'Por favor, completa ambos campos.',
+      });
       return;
     }
+
     if (password.length < 6) {
-      setError("La contraseña es demasiado corta");
+      Swal.fire({
+        icon: 'warning',
+        title: 'Contraseña corta',
+        text: 'La contraseña debe tener al menos 6 caracteres.',
+      });
       return;
     }
 
     try {
       await login(email, password);
-      setExito("¡Inicio de sesión exitoso!");
+      Swal.fire({
+        icon: 'success',
+        title: 'Inicio de sesión exitoso',
+        text: '¡Bienvenido!',
+        confirmButtonText: 'Continuar',
+      }).then(() => {
+        navigate("/profile");
+      });
     } catch (error) {
-      setError(error.message || "Error en el inicio de sesión");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error en el inicio de sesión',
+        text: error.message || 'Hubo un problema al iniciar sesión.',
+      });
     }
   };
 
@@ -61,8 +78,6 @@ export const Login = () => {
           />
         </div>
         <button type="submit">Iniciar Sesión</button>
-        {error && <p className="error">{error}</p>}
-        {exito && <p className="exito">{exito}</p>}
       </form>
     </div>
   );
