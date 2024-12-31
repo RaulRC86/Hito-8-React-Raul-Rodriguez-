@@ -1,78 +1,98 @@
-import './Register.css'
+import './Register.css';
 import { useState } from "react";
+import { useUser } from "../../contexts/userContext";
+import Swal from "sweetalert2";
 
 export const Register = () => {
+  const { register } = useUser(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
-  const [error, setError] = useState("");
-  const [exito, setExito] = useState("");
 
-  const validarDatos = (e) => {
+  const validarDatos = async (e) => {
     e.preventDefault();
-    setError("");
-    setExito("");
+
 
     if (!email.trim() || !password.trim() || !confirmar.trim()) {
-      setError("Todos los campos son obligatorios.");
+      Swal.fire({
+        icon: "error",
+        title: "Campos obligatorios",
+        text: "Todos los campos son obligatorios.",
+      });
       return;
     }
     if (password.length < 6) {
-      setError("La contraseña debe tener más de 6 caracteres.");
+      Swal.fire({
+        icon: "error",
+        title: "Contraseña inválida",
+        text: "La contraseña debe tener más de 6 caracteres.",
+      });
       return;
     }
     if (password !== confirmar) {
-      setError("Las contraseñas no coinciden.");
+      Swal.fire({
+        icon: "error",
+        title: "Contraseñas no coinciden",
+        text: "Asegúrate de que ambas contraseñas sean iguales.",
+      });
       return;
     }
     if (!email.includes("@") || !email.includes(".")) {
-      setError("El email debe tener una @ y un punto.");
+      Swal.fire({
+        icon: "error",
+        title: "Email inválido",
+        text: "El email debe contener una '@' y un punto.",
+      });
       return;
     }
 
-    setExito("¡Registro Exitoso!");
+ 
+    try {
+      await register(email, password); 
+      Swal.fire({
+        icon: "success",
+        title: "¡Registro exitoso!",
+        text: "Tu cuenta ha sido creada correctamente.",
+        confirmButtonText: "Iniciar sesión",
+      }).then(() => {
+        
+        window.location.href = "/login";
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error en el registro",
+        text: error.message || "No se pudo completar el registro.",
+      });
+    }
   };
 
   return (
-    <>
     <div className="formulario">
       <form className="form" onSubmit={validarDatos}>
+        <label>Email</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
- 
- 
-          <label>Contraseña</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-       
-       
-          <label>Confirmar Contraseña</label>
-          <input
-            type="password"
-            value={confirmar}
-            onChange={(e) => setConfirmar(e.target.value)}
-          />
+        <label>Contraseña</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-
-        {/* Mostrar error si existe */}
-        {error && <p className="error">{error}</p>}
-
-        {/* Mostrar mensaje de éxito si corresponde */}
-        {exito && <p className="exito">{exito}</p>}
+        <label>Confirmar Contraseña</label>
+        <input
+          type="password"
+          value={confirmar}
+          onChange={(e) => setConfirmar(e.target.value)}
+        />
 
         <button type="submit">Enviar</button>
       </form>
-      </div>
-    </>
+    </div>
   );
 };
-
-
