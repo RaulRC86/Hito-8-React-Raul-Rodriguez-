@@ -58,17 +58,14 @@ export const Login = () => {
 
   return (
     <div className="formulario">
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit}>     
           <label>Email</label>
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
+          />        
           <label>Contraseña</label>
           <input
             type="password"
@@ -76,7 +73,7 @@ export const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+      
         <button type="submit">Iniciar Sesión</button>
       </form>
     </div>

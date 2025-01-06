@@ -7,11 +7,12 @@
   align-items: center;
   padding: 20px;
   margin: 0;
+  border: solid black 2px;
   
 }
 
 .form{
-  border: solid black 2px;
+  
   padding: 20px;
   display: flex;
   flex-direction: column;
