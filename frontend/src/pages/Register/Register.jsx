@@ -85,7 +85,7 @@ export const Register = () => {
         />
 
         <label>Confirmar Contraseña</label>
-        <input
+        <input className='password'
           type="password"
           value={confirmar}
           onChange={(e) => setConfirmar(e.target.value)}

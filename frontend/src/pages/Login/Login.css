@@ -7,15 +7,18 @@
   align-items: center;
   padding: 20px;
   margin: 0;
-  border: solid black 2px;
+  
   
 }
 
-.form{
+form{
   
   padding: 20px;
   display: flex;
   flex-direction: column;
+  border: solid black 2px;
 }
+
+.botón{margin-top: 10px;}
 
 input:focus{border: blue solid 3px}

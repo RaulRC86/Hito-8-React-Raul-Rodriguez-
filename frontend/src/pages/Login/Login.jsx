@@ -67,14 +67,14 @@ export const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />        
           <label>Contraseña</label>
-          <input
+          <input 
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
       
-        <button type="submit">Iniciar Sesión</button>
+        <button className='botón' type="submit">Iniciar Sesión</button>
       </form>
     </div>
   );
