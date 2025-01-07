@@ -1,7 +1,7 @@
 import './login.css';
 import { useState, useEffect } from "react";
 import { useUser } from '../../contexts/userContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export const Login = () => {
@@ -74,8 +74,9 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
       
-        <button className='botón' type="submit">Iniciar Sesión</button>
+        <button className='botón' type="submit">Iniciar Sesión</button>                
       </form>
+      <button><Link to="/register">Crea una nueva cuenta aquí</Link></button>
     </div>
   );
 };
