@@ -76,7 +76,7 @@ export const Login = () => {
       
         <button className='botón' type="submit">Iniciar Sesión</button>                
       </form>
-      <button><Link to="/register">Crea una nueva cuenta aquí</Link></button>
+      <button className='botón2'><Link to="/register">Crea una nueva cuenta aquí</Link></button>
     </div>
   );
 };
