@@ -1,3 +1,7 @@
+body{
+  background-color: rgb(236, 236, 236);
+}
+
 .formulario {
   height: 100vh;
   display: flex;
@@ -11,8 +15,13 @@
 }
 
 .form{
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 30%;
+  height: auto;
   border: solid black 2px;
-  padding: 20px;
   
 }
 
