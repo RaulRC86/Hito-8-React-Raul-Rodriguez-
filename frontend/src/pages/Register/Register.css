@@ -28,3 +28,5 @@ body{
 .password{
   margin-bottom: 10px;
 }
+
+.botón{margin-top: 10px; padding-inline: 10px; padding-block: 5px;}

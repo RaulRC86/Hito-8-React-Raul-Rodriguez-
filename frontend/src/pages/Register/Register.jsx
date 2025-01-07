@@ -91,7 +91,7 @@ export const Register = () => {
           onChange={(e) => setConfirmar(e.target.value)}
         />
 
-        <button type="submit">Enviar</button>
+        <button className='botón' type="submit">Enviar</button>
       </form>
     </div>
   );
